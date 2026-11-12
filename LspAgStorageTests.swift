@@ -10,14 +10,14 @@ final class LspAgStorageTests: XCTestCase {
     }
 
     func testS3PublicURLMatchesFlutterComposition() {
-        let credentials = MovenS3Credentials(bucket: "mevon", endpoint: "https://s3.ap-east-1.amazonaws.com", accessKeyID: "k", secretAccessKey: "s")
-        let url = MovenS3Uploader.publicURL(path: "/client_user/42/avatar/a.png", credentials: credentials)
-        XCTAssertEqual(url?.absoluteString, "https://mevon.s3.ap-east-1.amazonaws.com/client_user/42/avatar/a.png")
+        let credentials = MovenS3Credentials(bucket: "example-bucket", endpoint: "https://s3.ap-east-1.amazonaws.com", accessKeyID: "k", secretAccessKey: "s")
+        let url = MovenS3Uploader.publicURL(path: "/avatars/example.png", credentials: credentials)
+        XCTAssertEqual(url?.absoluteString, "https://example-bucket.s3.ap-east-1.amazonaws.com/avatars/example.png")
     }
 
     func testS3SignatureIsDeterministic() {
-        let credentials = MovenS3Credentials(bucket: "mevon", endpoint: "https://s3.ap-east-1.amazonaws.com", accessKeyID: "AKIDEXAMPLE", secretAccessKey: "secret")
-        let url = URL(string: "https://s3.ap-east-1.amazonaws.com/mevon/client_user/42/avatar/a.png")!
+        let credentials = MovenS3Credentials(bucket: "example-bucket", endpoint: "https://s3.ap-east-1.amazonaws.com", accessKeyID: "AKIDEXAMPLE", secretAccessKey: "secret")
+        let url = URL(string: "https://s3.ap-east-1.amazonaws.com/example-bucket/avatars/example.png")!
         let date = Date(timeIntervalSince1970: 1_700_000_000)
         let payload = Data("hello".utf8)
 

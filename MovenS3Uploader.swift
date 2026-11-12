@@ -263,7 +263,7 @@ enum MovenS3Signer {
 ///
 /// Flutter 侧通过 MethodChannel 调原生（iOS 端其实是个空壳），这里用纯 Swift
 /// 实现 SigV4 签名 + PUT，行为与插件在 Android 上的实现一致：
-/// 成功返回对象路径（`/client_user/<uid>/avatar/<name>`），由调用方拼成公网 URL。
+/// 成功返回对象路径（`/avatars/<name>`），由调用方拼成公网 URL。
 public struct MovenS3Uploader: Sendable {
     /// 上传进度回调（0...1），可能在任意线程触发；界面更新需自行切回主线程。
     /// 请求体发送阶段最多报告 0.999999，只有收到 HTTP 2xx 后才报告 1。
@@ -282,7 +282,7 @@ public struct MovenS3Uploader: Sendable {
     ///
     /// - Parameters:
     ///   - data: 已加载到内存的完整对象内容。
-    ///   - key: 桶内对象路径，例如 `client_user/42/avatar/a.jpg`。
+    ///   - key: 桶内对象路径，例如 `avatars/example.jpg`。
     ///   - contentType: 对象的 MIME 类型，例如 `image/jpeg`。
     ///   - credentials: 上传凭证与目标桶配置。
     ///   - onProgress: 可选进度回调；回调线程不固定。

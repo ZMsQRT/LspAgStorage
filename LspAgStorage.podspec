@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LspAgStorage'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'S3-compatible object storage uploads for iOS.'
   s.homepage         = 'https://github.com/ZMsQRT/LspAgStorage'
   s.license          = { :type => 'Proprietary', :text => 'Copyright Moven. All rights reserved.' }
